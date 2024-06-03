@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 env:
-  AWS_REGION: "us-east-2" # Change to reflect your Region
+  AWS_REGION: "us-east-2"
 
 jobs:
   AssumeRoleAndCallIdentity:
@@ -18,10 +18,10 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1.7.0
         with:
-          role-to-assume: <arn:aws:iam::851725469457:role/github-actions> # Change to reflect your IAM role’s ARN
+          role-to-assume: arn:aws:iam::851725469457:role/github-actions
           role-session-name: GitHub_to_AWS_via_FederatedOIDC
           aws-region: ${{ env.AWS_REGION }}
-      # Hello from AWS: WhoAmI
+      
       - name: Sts GetCallerIdentity
         run: |
           aws sts get-caller-identity
