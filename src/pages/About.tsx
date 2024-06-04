@@ -7,7 +7,7 @@ const About: React.FC = () => {
       <h1 className="text-2xl font-bold text-center mb-2">Roddie Frederik</h1>
       <img src={roddie} alt="Roddie" className="mx-auto mb-2 md:w-1/4 w-full" />
       <p className="mb-4">
-        Roddie Frederik is a passionate full-stack software engineer with extensive experience in a variety of technologies, including TypeScript, Node.js, PHP/Laravel, .NET/C#, Vue, React, and more. He thrives in fast-paced startup environments, embodying a work-hard, play-hard culture.
+        Roddie Frederik is an adaptable full-stack software engineer with extensive experience in a variety of technologies, including TypeScript, Node.js, PHP/Laravel, .NET/C#, Vue, React, and more. He thrives in fast-paced startup environments, embodying a work-hard, play-hard culture.
       </p>
       <p className="mb-4">
         When not coding, Roddie enjoys skateboarding with friends and chess.
