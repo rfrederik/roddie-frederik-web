@@ -6,7 +6,7 @@ import { ReactComponent as MailIcon } from '../assets/mail.svg';
 const Contact: React.FC = () => {
   return (
     <div className="p-4 flex flex-col items-center">
-      <h1 className="text-2xl font-bold text-center mb-4">Contact</h1>
+      <h1 className="text-3xl font-bold text-center mb-4">Contact</h1>
       <div className="flex justify-center">
       <a href="mailto:roddiefrederik@gmail.com" className="mx-4">
           <MailIcon className="w-7 h-7" />
