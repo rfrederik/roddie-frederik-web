@@ -50,14 +50,14 @@ const Snake: React.FC = () => {
     setSnake(newSnake);
   }, [snake, currentDirection, food, snakeLength]);
 
-  const handleDirectionChange = (newDirection: Coordinate) => {
+  const handleDirectionChange = useCallback((newDirection: Coordinate) => {
     if (
       (newDirection.x !== 0 && currentDirection.x === 0) ||
       (newDirection.y !== 0 && currentDirection.y === 0)
     ) {
       setCurrentDirection(newDirection);
     }
-  };
+  }, []);
 
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
