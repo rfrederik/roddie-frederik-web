@@ -16,27 +16,6 @@ const Snake: React.FC = () => {
   const [isMobileView, setIsMobileView] = useState<boolean>(false);
   const [snakeLength, setSnakeLength] = useState<number>(1); // Initial length of the snake
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (!gameOver) {
-        moveSnake();
-      }
-    }, 100);
-
-    const mediaQuery = window.matchMedia('(max-width: 767px)');
-    setIsMobileView(mediaQuery.matches);
-
-    mediaQuery.addListener((e) => setIsMobileView(e.matches));
-
-    document.addEventListener('keydown', handleKeyPress);
-
-    return () => {
-      clearInterval(interval);
-      document.removeEventListener('keydown', handleKeyPress);
-      mediaQuery.removeListener((e) => setIsMobileView(e.matches));
-    };
-  }, [snake, currentDirection, gameOver]);
-
   const moveSnake = useCallback(() => {
     const newSnake = [...snake];
     const head = { ...newSnake[0] };
@@ -69,22 +48,7 @@ const Snake: React.FC = () => {
     newSnake.unshift(head);
     newSnake.length = snakeLength; // Adjust the length to match the snakeLength
     setSnake(newSnake);
-  }, [snake, currentDirection, food, gameOver, snakeLength]);
-
-  const placeFood = () => {
-    const x = Math.floor(Math.random() * gridSize);
-    const y = Math.floor(Math.random() * gridSize);
-    setFood({ x, y });
-  };
-
-  const snakeCollision = (head: Coordinate, segments: Coordinate[]) => {
-    for (let segment of segments) {
-      if (head.x === segment.x && head.y === segment.y) {
-        return true;
-      }
-    }
-    return false;
-  };
+  }, [snake, currentDirection, food, snakeLength]);
 
   const handleKeyPress = (e: KeyboardEvent) => {
     switch (e.key) {
@@ -103,6 +67,42 @@ const Snake: React.FC = () => {
       default:
         break;
     }
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!gameOver) {
+        moveSnake();
+      }
+    }, 100);
+
+    const mediaQuery = window.matchMedia('(max-width: 767px)');
+    setIsMobileView(mediaQuery.matches);
+
+    mediaQuery.addListener((e) => setIsMobileView(e.matches));
+
+    document.addEventListener('keydown', handleKeyPress);
+
+    return () => {
+      clearInterval(interval);
+      document.removeEventListener('keydown', handleKeyPress);
+      mediaQuery.removeListener((e) => setIsMobileView(e.matches));
+    };
+  }, [snake, currentDirection, gameOver, moveSnake, handleKeyPress]);
+
+  const placeFood = () => {
+    const x = Math.floor(Math.random() * gridSize);
+    const y = Math.floor(Math.random() * gridSize);
+    setFood({ x, y });
+  };
+
+  const snakeCollision = (head: Coordinate, segments: Coordinate[]) => {
+    for (let segment of segments) {
+      if (head.x === segment.x && head.y === segment.y) {
+        return true;
+      }
+    }
+    return false;
   };
 
   const handleDirectionChange = (newDirection: Coordinate) => {
