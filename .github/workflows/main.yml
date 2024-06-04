@@ -1,31 +1,39 @@
-name: Connect to an AWS role from a GitHub repository
+name: Deploy to AWS S3
 
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 env:
   AWS_REGION: "us-east-2"
+  S3_BUCKET_NAME: "roddiefrederik.com"
+  SOURCE_DIR: "build" 
 
 permissions:
   id-token: write
   contents: read
 
 jobs:
-  AssumeRoleAndCallIdentity:
+  DeployToS3:
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Git clone the repository
-        uses: actions/checkout@v3.4.0
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v2
-        with:
-          role-to-assume: arn:aws:iam::851725469457:role/GitHubAction-AssumeRoleWithAction
-          role-session-name: GitHub_to_AWS_via_FederatedOIDC
-          aws-region: ${{ env.AWS_REGION }}
-
-      - name: Sts GetCallerIdentity
-        run: |
-          aws sts get-caller-identity
+    - name: Checkout code
+      uses: actions/checkout@v3.4.0
+      
+    - name: Build application
+      run: |
+        # Build commands to generate the static files
+        npm install
+        npm run build
+        
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        role-to-assume: arn:aws:iam::851725469457:role/GitHubAction-AssumeRoleWithAction
+        role-session-name: GitHub_to_AWS_via_FederatedOIDC
+        aws-region: ${{ env.AWS_REGION }}
+        
+    - name: Deploy to S3
+      run: |
+        aws s3 sync ${{ env.SOURCE_DIR }} s3://${{ env.S3_BUCKET_NAME }} --delete
