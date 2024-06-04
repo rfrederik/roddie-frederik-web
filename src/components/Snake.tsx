@@ -57,7 +57,7 @@ const Snake: React.FC = () => {
     ) {
       setCurrentDirection(newDirection);
     }
-  }, []);
+  }, [currentDirection]);
 
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
