@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import Lounge from './pages/Lounge';
 import 'typeface-roboto';
 import 'typeface-lora';
 
@@ -30,6 +31,7 @@ const App: React.FC = () => {
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/lounge" element={<Lounge />} />
             </Routes>
           </div>
         </div>
