@@ -50,26 +50,26 @@ const Snake: React.FC = () => {
     setSnake(newSnake);
   }, [snake, currentDirection, food, snakeLength]);
 
-  const handleKeyPress = (e: KeyboardEvent) => {
-    switch (e.key) {
-      case 'ArrowLeft':
-        handleDirectionChange({ x: -1, y: 0 });
-        break;
-      case 'ArrowUp':
-        handleDirectionChange({ x: 0, y: -1 });
-        break;
-      case 'ArrowRight':
-        handleDirectionChange({ x: 1, y: 0 });
-        break;
-      case 'ArrowDown':
-        handleDirectionChange({ x: 0, y: 1 });
-        break;
-      default:
-        break;
-    }
-  };
-
   useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      switch (e.key) {
+        case 'ArrowLeft':
+          handleDirectionChange({ x: -1, y: 0 });
+          break;
+        case 'ArrowUp':
+          handleDirectionChange({ x: 0, y: -1 });
+          break;
+        case 'ArrowRight':
+          handleDirectionChange({ x: 1, y: 0 });
+          break;
+        case 'ArrowDown':
+          handleDirectionChange({ x: 0, y: 1 });
+          break;
+        default:
+          break;
+      }
+    };
+
     const interval = setInterval(() => {
       if (!gameOver) {
         moveSnake();
@@ -88,7 +88,7 @@ const Snake: React.FC = () => {
       document.removeEventListener('keydown', handleKeyPress);
       mediaQuery.removeListener((e) => setIsMobileView(e.matches));
     };
-  }, [snake, currentDirection, gameOver, moveSnake, handleKeyPress]);
+  }, [snake, currentDirection, gameOver, moveSnake]);
 
   const placeFood = () => {
     const x = Math.floor(Math.random() * gridSize);
