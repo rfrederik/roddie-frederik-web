@@ -83,7 +83,7 @@ const Snake: React.FC = () => {
       if (!gameOver) {
         moveSnake();
       }
-    }, 100);
+    }, 90);
 
     const mediaQuery = window.matchMedia('(max-width: 767px)');
     setIsMobileView(mediaQuery.matches);
@@ -124,6 +124,7 @@ const Snake: React.FC = () => {
 
   return (
     <div className="snake-game">
+      <div className="score">Score: {snakeLength - 1}</div>
       {gameOver && (
         <div className="game-over">
           Game Over
@@ -156,7 +157,6 @@ const Snake: React.FC = () => {
           <button className="right arrow" onClick={() => handleDirectionChange({ x: 1, y: 0 })}></button>
         </div>
       )}
-      <div className="score">Score: {snakeLength - 1}</div>
     </div>
   );
 };
