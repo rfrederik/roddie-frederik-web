@@ -50,6 +50,15 @@ const Snake: React.FC = () => {
     setSnake(newSnake);
   }, [snake, currentDirection, food, snakeLength]);
 
+  const handleDirectionChange = (newDirection: Coordinate) => {
+    if (
+      (newDirection.x !== 0 && currentDirection.x === 0) ||
+      (newDirection.y !== 0 && currentDirection.y === 0)
+    ) {
+      setCurrentDirection(newDirection);
+    }
+  };
+
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
       switch (e.key) {
@@ -88,7 +97,7 @@ const Snake: React.FC = () => {
       document.removeEventListener('keydown', handleKeyPress);
       mediaQuery.removeListener((e) => setIsMobileView(e.matches));
     };
-  }, [snake, currentDirection, gameOver, moveSnake]);
+  }, [snake, currentDirection, gameOver, moveSnake, handleDirectionChange]);
 
   const placeFood = () => {
     const x = Math.floor(Math.random() * gridSize);
@@ -105,18 +114,9 @@ const Snake: React.FC = () => {
     return false;
   };
 
-  const handleDirectionChange = (newDirection: Coordinate) => {
-    if (
-      (newDirection.x !== 0 && currentDirection.x === 0) ||
-      (newDirection.y !== 0 && currentDirection.y === 0)
-    ) {
-      setCurrentDirection(newDirection);
-    }
-  };
-
   const restartGame = () => {
-    setSnake([{ x: 10, y: 10 }]);
-    setFood({ x: 15, y: 15 });
+    setSnake([{ x: 3, y: 10 }]);
+    setFood({ x: 10, y: 10 });
     setCurrentDirection({ x: 1, y: 0 });
     setGameOver(false);
     setSnakeLength(1);
