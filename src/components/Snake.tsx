@@ -14,7 +14,7 @@ const Snake: React.FC = () => {
   const [gameOver, setGameOver] = useState<boolean>(false);
   const [currentDirection, setCurrentDirection] = useState<Coordinate>({ x: 1, y: 0 });
   const [isMobileView, setIsMobileView] = useState<boolean>(false);
-  const [snakeLength, setSnakeLength] = useState<number>(1); // Initial length of the snake
+  const [snakeLength, setSnakeLength] = useState<number>(1);
 
   const moveSnake = useCallback(() => {
     const newSnake = [...snake];
@@ -25,7 +25,7 @@ const Snake: React.FC = () => {
     if (head.x === food.x && head.y === food.y) {
       newSnake.unshift(head);
       placeFood();
-      setSnakeLength(snakeLength + 1); // Increment the snake's length
+      setSnakeLength(snakeLength + 1);
     }
 
     if (head.x >= gridSize) {
@@ -46,7 +46,7 @@ const Snake: React.FC = () => {
     }
 
     newSnake.unshift(head);
-    newSnake.length = snakeLength; // Adjust the length to match the snakeLength
+    newSnake.length = snakeLength;
     setSnake(newSnake);
   }, [snake, currentDirection, food, snakeLength]);
 
@@ -119,7 +119,7 @@ const Snake: React.FC = () => {
     setFood({ x: 15, y: 15 });
     setCurrentDirection({ x: 1, y: 0 });
     setGameOver(false);
-    setSnakeLength(1); // Reset the snake's length
+    setSnakeLength(1);
   };
 
   return (
