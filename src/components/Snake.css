@@ -1,101 +1,106 @@
 .snake-game {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-  
-  .grid {
-    display: grid;
-    grid-template-rows: repeat(15, 20px);
-    grid-template-columns: repeat(15, 20px);
-  }
-  
-  .row {
-    display: contents;
-  }
-  
-  .cell {
-    width: 20px;
-    height: 20px;
-    border: 1px solid #ddd;
-  }
-  
-  .snake {
-    background-color: green;
-  }
-  
-  .food {
-    background-color: red;
-  }
-  
-  .game-over {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .game-over button {
-    margin-top: 10px;
-    padding: 5px 10px;
-    font-size: 16px;
-  }
-  
-  .controls {
-    display: grid;
-    grid-template-columns: repeat(3, 80px);
-    grid-template-rows: repeat(3, 80px);
-    grid-gap: 15px;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .arrow {
-    border: none;
-    background-color: #333;
-    color: white;
-    font-size: 30px;
-    outline: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 80px;
-    height: 80px;
-  }
-  
-  .up::before {
-    content: '↑';
-  }
-  
-  .down::before {
-    content: '↓';
-  }
-  
-  .left::before {
-    content: '←';
-  }
-  
-  .right::before {
-    content: '→';
-  }
-  
-  .up {
-    grid-row: 1;
-    grid-column: 2;
-  }
-  
-  .down {
-    grid-row: 3;
-    grid-column: 2;
-  }
-  
-  .left {
-    grid-row: 2;
-    grid-column: 1;
-  }
-  
-  .right {
-    grid-row: 2;
-    grid-column: 3;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.grid {
+  display: grid;
+  grid-template-rows: repeat(15, 20px);
+  grid-template-columns: repeat(15, 20px);
+}
+
+.row {
+  display: contents;
+}
+
+.cell {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ddd;
+}
+
+.snake {
+  background-color: green;
+}
+
+.food {
+  background-color: red;
+}
+
+.game-over {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.game-over button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  font-size: 20px;
+  background-color: #333;
+  color: white;
+  border-radius: 0.375rem;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  grid-template-rows: repeat(3, 80px);
+  grid-gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.arrow {
+  border: none;
+  background-color: #333;
+  color: white;
+  font-size: 30px;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+}
+
+.up::before {
+  content: '↑';
+}
+
+.down::before {
+  content: '↓';
+}
+
+.left::before {
+  content: '←';
+}
+
+.right::before {
+  content: '→';
+}
+
+.up {
+  grid-row: 1;
+  grid-column: 2;
+}
+
+.down {
+  grid-row: 3;
+  grid-column: 2;
+}
+
+.left {
+  grid-row: 2;
+  grid-column: 1;
+}
+
+.right {
+  grid-row: 2;
+  grid-column: 3;
+}

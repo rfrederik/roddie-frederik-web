@@ -124,13 +124,13 @@ const Snake: React.FC = () => {
 
   return (
     <div className="snake-game">
-      <div className="score">Score: {snakeLength - 1}</div>
       {gameOver && (
         <div className="game-over">
           Game Over
           <button onClick={restartGame}>Restart</button>
         </div>
       )}
+      <div className="score">Score: {snakeLength - 1}</div>
       <div className="grid">
         {Array.from(Array(gridSize), (_, y) => (
           <div key={y} className="row">
