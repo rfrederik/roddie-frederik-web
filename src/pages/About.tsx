@@ -11,7 +11,7 @@ const About: React.FC = () => {
         </div>
         <div className="md:w-3/4 md:pl-4">
           <p className="mb-4">
-            Roddie Frederik is an adaptable full-stack software engineer with extensive experience in a variety of technologies, including TypeScript, Node.js, PHP/Laravel, .NET/C#, Vue, React, and more. He thrives in fast-paced startup environments, embodying a work-hard, play-hard culture.
+            Roddie Frederik is an adaptable full-stack software engineer with extensive experience in a variety of technologies, including TypeScript, Node.js, PHP/Laravel, .NET/C#, Vue, React, and more. He thrives in fast-paced startup environments.
           </p>
           <p className="mb-4">
             When not coding, Roddie enjoys skateboarding with friends and chess.
